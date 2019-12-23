@@ -5,35 +5,37 @@ import java.util.*;
 class QuickSort {
 
     public static void main(String... args) {
-        Integer[] arr = {5, 10, 15, 0, -9, 20, 99, 17, 14};
+        int[] arr = {5, 10, 15, 0, -9, 20, 99, 17, 14};
 
-        System.out.println(quick_sort(arr));
+        quick_sort(arr, 0, arr.length-1);
+        System.out.println(Arrays.toString(arr));
     }
 
-    private static List<Integer> quick_sort(Integer[] arr) {
-        if (arr.length <= 1) return Arrays.asList(arr);
-
-        int pivot = arr[0];
-        List<Integer> left = new ArrayList();
-        List<Integer> mid = new ArrayList();
-        List<Integer> right = new ArrayList();
-
-        for(int i=0; i<arr.length; i++) {
-            if(arr[i] < pivot) {
-                left.add(arr[i]);
-            } else if(arr[i] > pivot) {
-                right.add(arr[i]);
-            } else {
-                mid.add(arr[i]);
+    public static int partition(int[] arr, int left, int right) {
+        int pivot = arr[right];
+        int i = left;
+        for(int j=left; j<right; j++) {
+            if(arr[j] < pivot) {
+//                System.out.println("Pivot = " + pivot);
+                // Swap
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+                i++;
             }
         }
 
-        System.out.println("Quick sort: " + left + " + " + mid + " + " + right);
+        int temp = arr[i];
+        arr[i] = arr[right];
+        arr[right] = temp;
+        return i;
+    }
 
-        List<Integer> ret = new ArrayList<>();
-        ret.addAll(quick_sort(left.toArray(new Integer[0])));
-        ret.addAll(mid);
-        ret.addAll(quick_sort(right.toArray(new Integer[0])));
-        return ret;
+    public static void quick_sort(int[] arr, int left, int right) {
+        if(left < right) {
+            int pi = partition(arr, left, right);
+            quick_sort(arr, left, pi-1);
+            quick_sort(arr, pi+1, right);
+        }
     }
 }
