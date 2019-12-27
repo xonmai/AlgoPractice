@@ -1,8 +1,6 @@
 package com.java.leetcode;
 
-/**
- * Created by skyne on 8/11/2018.
- */
+
 public class SuperUgly {
 
     public static void main(String[] args) {

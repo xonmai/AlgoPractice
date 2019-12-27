@@ -5,9 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by skyne on 12/1/2019.
- */
+
 public class BookingCare {
 
     public static void main(String... args) {
