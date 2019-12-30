@@ -1,6 +1,6 @@
 package com.java.hackerrank;
 
-import com.google.gson.Gson;
+//import com.google.gson.Gson;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -25,7 +25,7 @@ public class MovieTitles {
         int total = 2;
         List<String> result = new ArrayList<>();
         HttpURLConnection conn ;
-        Gson gson = new Gson();
+//        Gson gson = new Gson();
 
         for(int i = 1; i < total; i++) {
             try {
@@ -35,7 +35,8 @@ public class MovieTitles {
 
                 BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
                 String output = br.readLine();
-                Result response = gson.fromJson(output, Result.class);
+//                Result response = gson.fromJson(output, Result.class);
+                Result response = null;
 
                 if (response != null) {
                     total = response.total_pages;
